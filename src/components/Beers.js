@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { listBeers } from '../services/ListBeers';
+import { NavLink } from 'react-router-dom';
 
 class Beers extends Component {
     state = {
         beers: [{
+          _id: '',
           name: '',
           image_url: '',
           tagline: '',
@@ -25,7 +27,10 @@ class Beers extends Component {
             return (
                 <div className="BeerList">
                     {this.state.beers.map(beer => (
-                        <h1>{beer.name}</h1>
+                      <div className="BeerName"> 
+                      <h1>{beer.name}</h1>
+                        <NavLink activeClassName="is-active" exact to={`/beers/${this.state._id}`}>More Info</NavLink>
+                        </div>
                     ))}
                 </div>
             );
